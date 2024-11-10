@@ -28,7 +28,7 @@ class FeedController extends Controller
             'status' => true,
             'message' => "Success get feeds",
             'data' => $feeds
-        ]);
+        ], 200);
     }
 
     public function store(Request $request)
@@ -54,7 +54,7 @@ class FeedController extends Controller
             'status' => true,
             'message' => 'Success store new feed',
             'data' => $data
-        ]);
+        ], 201);
     }
 
     public function likePost($feed_id)
@@ -76,7 +76,7 @@ class FeedController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => "Unliked"
-            ]);
+            ], 200);
         }
 
         Like::create([
@@ -87,7 +87,7 @@ class FeedController extends Controller
         return response()->json([
             'status' => true,
             'message' => "Liked"
-        ]);
+        ], 200);
     }
 
     public function comment(Request $request, $feed_id)
@@ -117,7 +117,8 @@ class FeedController extends Controller
                 'status' => true,
                 'message' => "Comment Successful",
                 'data' => $comment
-            ]
+            ],
+            201
         );
     }
 
@@ -130,7 +131,7 @@ class FeedController extends Controller
                 'status' => true,
                 'message' => "Success get comments",
                 'data' => $comments
-            ]
+            ], 200
         );
     }
 }
